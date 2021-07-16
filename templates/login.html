@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DemoBase Login</title>
+</head>
+<body>
+
+
+    <div id="absoluteCenteredDiv">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="box">
+                <h1>Login Form</h1>
+                {% if failed_login %}
+                    <div class="failed-login">
+                        {{ failed_login }}
+                    </div>
+                {% endif %}
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="verification-msg">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {{ form.email }}
+                {{ form.password }}
+                <input type="submit" class="button" value="Login">
+                <a href="/register" class="reg">Register</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

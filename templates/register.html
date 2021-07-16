@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DemoBase Register</title>
+</head>
+<body>
+
+    <div id="absoluteCenteredDivReg">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="box">
+                <h1>Register Form</h1>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="verification-msg">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {{ form.email }}
+                {{ form.name }}
+                {{ form.age }}
+                {{ form.phone }}
+                {{ form.password }}
+                {{ form.confirm_password }}
+
+                <input type="submit" class="button" value="Register">
+                <a href="/" class="reg">Login</a>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+</html>
