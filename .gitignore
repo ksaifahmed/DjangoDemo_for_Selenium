@@ -83,7 +83,6 @@ target/
 *.pot
 *.pyc
 __pycache__/
-DjangoDemo_for_Selenium/settings.py
 
 .env
 db.sqlite3
