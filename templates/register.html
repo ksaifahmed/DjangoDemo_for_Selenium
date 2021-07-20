@@ -31,12 +31,18 @@
                 {{ form.password }}
                 {{ form.confirm_password }}
 
-                <input type="submit" class="button" value="Register">
-                <a href="/" class="reg">Login</a>
+                <input id="id_register" type="submit" class="button" value="Register">
+                <a href="/" id="id_login" class="reg">Login</a>
             </div>
         </form>
     </div>
 
 
 </body>
+
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </html>

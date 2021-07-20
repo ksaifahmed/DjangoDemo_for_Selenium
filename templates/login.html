@@ -31,10 +31,16 @@
 
                 {{ form.email }}
                 {{ form.password }}
-                <input type="submit" class="button" value="Login">
-                <a href="/register" class="reg">Register</a>
+                <input type="submit" id="id_submit" class="button" value="Login">
+                <a href="/register" id="id_register" class="reg">Register</a>
             </div>
         </form>
     </div>
+
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </body>
 </html>

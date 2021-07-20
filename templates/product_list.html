@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product List</title>
+</head>
+<body>
+    {% if list %}
+        {% for item in list %}
+            <h4>{{ item.name }}</h4>
+            <par>price: {{ item.price }}, </par>
+            <par>quantity: {{ item.quantity }}, </par>
+            <par>discount: {{ item.discount }}, </par>
+            <par>warranty: {{ item.warranty }}, </par>
+            <par>refund: {{ item.refund }}, </par>
+            <par>exchange: {{ item.exchange }}, </par>
+            <par>free delivery: {{ item.free_delivery }}, </par>
+            <par>free service: {{ item.free_service }}, </par>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

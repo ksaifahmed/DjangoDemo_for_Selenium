@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'login/styles.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Homepage</title>
 </head>
 <body>
-    <a href="{% url 'logout' %}">Logout</a>
+    <div class="left">
+        <ul class="nav">
+            <li><a href="{% url 'history' %}" class="link">History</a></li>
+            <li><a class="link" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+
+    <div id="absoluteCenteredDivReg">
+        <form action="" method="post" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            <div class="box">
+                <h1>Product Form</h1>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="verification-msg">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {{ form.name }}
+                {{ form.price }}
+                {{ form.quantity }}
+                {{ form.discount }}
+                <div class="radio">Warranty {{ form.warranty }}</div>
+                <div class="radio">Additional Options {{ form.additional_options }}</div>
+                {{ form.location }}
+
+                <input type="submit" id="id_submit_home" class="button" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
 </body>
 </html>
