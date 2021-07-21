@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from home.forms import ProductForm
@@ -37,7 +38,7 @@ def load_home(request):
                 free_service="4" in additional_op
             )
             product.save()
-            print(additional_op)
+            messages.success(request, "Product Added Successfully! Check History for more")
             return redirect('home')
 
     return render(request, 'home.html', {'form': form, 'username': username})
