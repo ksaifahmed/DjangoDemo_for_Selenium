@@ -9,6 +9,9 @@
 </head>
 <body>
     <div class="left">
+        {% if username %}
+            <div class="username">{{ username }}</div>
+        {% endif %}
         <ul class="nav">
             <li><a href="{% url 'history' %}" class="link">History</a></li>
             <li><a class="link" href="{% url 'logout' %}">Logout</a></li>

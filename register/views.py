@@ -18,6 +18,8 @@ def register(request):
             age = form.cleaned_data['age']
             phone = form.cleaned_data['phone']
 
+            # check unique credentials
+
             user = CustomUser.objects.create_user(email, password, name, age, phone)
             user.save()
             messages.success(request, "Registration Successful! Please Login")

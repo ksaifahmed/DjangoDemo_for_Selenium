@@ -8,18 +8,57 @@
     <title>Product List</title>
 </head>
 <body>
-    {% if list %}
-        {% for item in list %}
-            <h4>{{ item.name }}</h4>
-            <par>price: {{ item.price }}, </par>
-            <par>quantity: {{ item.quantity }}, </par>
-            <par>discount: {{ item.discount }}, </par>
-            <par>warranty: {{ item.warranty }}, </par>
-            <par>refund: {{ item.refund }}, </par>
-            <par>exchange: {{ item.exchange }}, </par>
-            <par>free delivery: {{ item.free_delivery }}, </par>
-            <par>free service: {{ item.free_service }}, </par>
-        {% endfor %}
-    {% endif %}
+    <div class="left">
+        {% if username %}
+            <div class="username">{{ username }}</div>
+        {% endif %}
+        <ul class="nav">
+            <li><a href="{% url 'home' %}" class="link">Home</a></li>
+            <li><a class="link" href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">Product Name</th>
+                                <th class="column2">Price</th>
+                                <th class="column3">Discount</th>
+                                <th class="column4">Quantity</th>
+                                <th class="column5">Warranty</th>
+                                <th class="column6">Refund</th>
+                                <th class="column7">Exchange</th>
+                                <th class="column8">Free Delivery</th>
+                                <th class="column9">Free Service</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for item in list %}
+                                <tr>
+                                    <td class="column1">{{ item.name }}</td>
+                                    <td class="column2">{{ item.price }}</td>
+                                    <td class="column3">{{ item.discount }}</td>
+                                    <td class="column4">{{ item.quantity }}</td>
+                                    <td class="column5">{{ item.warranty}}</td>
+                                    <td class="column6">{{ item.refund}}</td>
+                                    <td class="column7">{{ item.exchange}}</td>
+                                    <td class="column8">{{ item.free_delivery}}</td>
+                                    <td class="column9">{{ item.free_service}}</td>
+                                </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

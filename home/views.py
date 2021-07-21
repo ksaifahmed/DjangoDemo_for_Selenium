@@ -2,12 +2,15 @@ from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from home.forms import ProductForm
 from home.models import Product
+from login.models import CustomUser
 
 
 def load_home(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
+    username = CustomUser.objects.get(id=request.user.id)
+    username = username.email
     form = ProductForm()
     if request.method == "POST":
         form = ProductForm(request.POST)
@@ -37,7 +40,7 @@ def load_home(request):
             print(additional_op)
             return redirect('home')
 
-    return render(request, 'home.html', {'form': form})
+    return render(request, 'home.html', {'form': form, 'username': username})
 
 
 def user_logout(request):
@@ -46,5 +49,11 @@ def user_logout(request):
 
 
 def history(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    username = CustomUser.objects.get(id=request.user.id)
+    username = username.email
+
     product_list = Product.objects.all()
-    return render(request, 'product_list.html', {'list': product_list})
+    return render(request, 'product_list.html', {'list': product_list, 'username': username})
